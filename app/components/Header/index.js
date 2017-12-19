@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Switch, Route, Link } from 'react-router-dom';
 
 import A from './A';
 import Img from './Img';
@@ -12,18 +13,24 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
   render() {
     return (
       <div>
-        <A href="https://twitter.com/mxstbr">
-          <Img src={Banner} alt="react-boilerplate - Logo" />
-        </A>
-        <NavBar>
-          <HeaderLink to="/">
-            <FormattedMessage {...messages.home} />
-          </HeaderLink>
-          <HeaderLink to="/features">
-            <FormattedMessage {...messages.features} />
-          </HeaderLink>
-        </NavBar>
+  <header id="header">
+    <div className="container clearfix">
+      <div id="menu-button">
+        <div className="centralizer">
+          <div className="cursor">Menu
+            <div id="nav-button"> <span className="nav-bar"></span> <span className="nav-bar"></span> <span className="nav-bar"></span> </div>
+          </div>
+        </div>
       </div>
+      <nav id="main-nav">
+        <ul id="options" className="option-set clearfix" data-option-key="filter">
+          <li className="selected"> <Link to='/'>Home</Link> </li>
+          <li> <Link to='/about'>About</Link> </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  </div>
     );
   }
 }
