@@ -6,24 +6,23 @@ import LocaleToggle from 'containers/LocaleToggle';
 import Wrapper from './Wrapper';
 import messages from './messages';
 
+const style = {
+  // position: 'absolute',
+  right: '0',
+  bottom: '0',
+  left: '0',
+  padding: '1rem',
+  backgroundColor: '#efefef',
+  textAlign: 'center',
+  backgroundColor: 'black',
+  color: 'white'
+};
+
 function Footer() {
   return (
-    <Wrapper>
-      <section>
-        <FormattedMessage {...messages.licenseMessage} />
-      </section>
-      <section>
-        <LocaleToggle />
-      </section>
-      <section>
-        <FormattedMessage
-          {...messages.authorMessage}
-          values={{
-            author: <A href="https://twitter.com/mxstbr">Max Stoiber</A>,
-          }}
-        />
-      </section>
-    </Wrapper>
+    <footer style={style}>
+      <p>©George Sas, 2017.</p>
+    </footer>
   );
 }
 

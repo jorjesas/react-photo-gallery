@@ -28,8 +28,11 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
   }
 
   componentDidMount() {
+    console.log(this.props);
+    const linkUrl = 'https://api.imgur.com/3/album/' + this.props.match.params.id +'/images';
+
     let getAlbumImagesAPI = {
-      link: 'https://api.imgur.com/3/album/d93Wj/images',
+      link: linkUrl,
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -50,7 +53,7 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
       let imagesList = data.data.map((image, index) => {
  
         return (
-          <li><a href="#"><img src={image.link} alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
+          <li><a href="#"><img src={image.link} alt="dummy" style={{width: '300px', height: '230px'}} /><h3>{image.description}</h3></a></li>
         );
       })
       this.setState({pictures: imagesList});
@@ -70,49 +73,9 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
       <section className="grid-wrap">
       <ul className="grid swipe-right" id="grid">
         <li className="title-box">
-          <h2>Illustrations by <a href="http://ryotakemasa.com/">Ryo Takemasa</a></h2>
+          <h2>Gallery images</h2>
         </li>
         {this.state.pictures}
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
-        <li><a href="#"><img src="https://i.imgur.com/LAbqhv1.jpg" alt="dummy" style={{width: '300px', height: '230px'}} /><h3>A fantastic title</h3></a></li>
       </ul>
     </section>
     );

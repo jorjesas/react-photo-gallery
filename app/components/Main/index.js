@@ -13,7 +13,7 @@ class Main extends React.Component { // eslint-disable-line react/prefer-statele
         <Switch>
             <Route exact path='/' component={HomePage}/>
             <Route path='/About' component={AboutPage}/>
-            <Route path='/Gallery' component={GalleryPage}/>
+            <Route path='/Gallery/:id' component={GalleryPage}/>
         </Switch>
       </div>
     );

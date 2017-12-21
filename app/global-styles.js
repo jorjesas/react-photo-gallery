@@ -125,7 +125,7 @@ pre { padding:0 30px 25px 30px; border:1px dotted #3e3e3e; margin-top:10px; marg
 
 /* =4. Headings
 --------------------------------------------------------------------------------------------------------*/
-.logo-wrapper {position:relative; padding:93px 0 45px 0; background:#fff }
+.logo-wrapper {position:relative; background:#fff }
 h1#logo { display:block; position:relative; text-align:center }
 h1#logo a { display:inline-block; background:url(../images/bg-logo.png) center no-repeat; background-size:60px 52px; width:60px; /*try to keep it below 52px*/ height:52px; text-indent:-9999px; }
 .tagline { font-family:'Montserrat',"Open Sans", Arial, Helvetica, sans-serif; font-size:24px; font-weight:400; padding:0 0 0 0; margin:0px auto; position:relative; color:#000; display:inline-block }

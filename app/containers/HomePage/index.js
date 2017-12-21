@@ -99,10 +99,10 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         let coverPic = "https://i.imgur.com/" + album.cover + ".jpg";
         
         return (
-          <div key={index} className="element  clearfix col1-3 home portfolio photography" style={{position: 'absolute', left: leftPos, top: topPos}}> <a href="/Gallery" title="">
+          <div key={index} className="element  clearfix col1-3 home portfolio photography" style={{position: 'absolute', left: leftPos, top: topPos}}> <a href={"/Gallery/" + album.id} title="">
           <figure className="images"> <img src={coverPic} alt={album.title} /> </figure>
           <div className="description">
-            <h4>{album.Title}</h4>
+            <h4>{album.title}</h4>
             <div className="bottom">
               <div className="wrapper">
                 <p className="small">view gallery</p>
@@ -135,14 +135,13 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     <div className="content-wrapper">
       <div id="content">
         <div className="container">
-          <div id="container" className="clearfix" style={{position: 'relative', height: '2560px'}}>
+          <div id="container" className="clearfix" style={{position: 'relative', height: '1400px'}}>
             <div className="element  clearfix col2-3 home about grey" style={{position: 'absolute', left: '320px', top: '0px'}}>
               <div className="tile-heading"><span>Image Gallery</span></div>
               <div className="parent">
                 <div className="child">
                   <h2>Hi! <br />
                     A <strong>photo-gallery</strong> developed with ReactJs. <br />
-                    That's about it.
                     </h2>
                   <a href="#about" className="bottom-link splink">
                   <p className="small">read about</p>
