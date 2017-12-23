@@ -97,10 +97,16 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         console.log("pos=",pos);
 
         let coverPic = "https://i.imgur.com/" + album.cover + ".jpg";
+
+        let backgroundStyle = {
+          background : coverPic
+        }
         
         return (
           <div key={index} className="element  clearfix col1-3 home portfolio photography" style={{position: 'absolute', left: leftPos, top: topPos}}> <a href={"/Gallery/" + album.id} title="">
-          <figure className="images"> <img src={coverPic} alt={album.title} /> </figure>
+          <figure className="images test" style={{backgroundImage: "url(" + coverPic + ")"}}>
+
+          </figure>
           <div className="description">
             <h4>{album.title}</h4>
             <div className="bottom">

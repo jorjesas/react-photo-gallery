@@ -16,6 +16,8 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 
+import { openModal, closeModal, plusSlides, currentSlide, showSlides, handleImageClick} from './modal';
+
 export class GalleryPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
@@ -23,7 +25,9 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
   constructor() {
     super();
     this.state = {
-      pictures: []
+      pictures: [],
+      modalSlideContainer: [],
+      modalImagesContainer: []
     }
   }
 
@@ -51,12 +55,33 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
     .then(data => {
       console.log(data);
       let imagesList = data.data.map((image, index) => {
- 
         return (
-          <li><a href="#"><img src={image.link} alt="dummy" style={{width: '300px', height: '230px'}} /><h3>{image.description}</h3></a></li>
+          <li key={index}><a onClick={openModal}><img src={image.link} alt="dummy" style={{width: '300px', height: '230px'}} /><h3>{image.description}</h3></a></li>
         );
-      })
+      });
+
+      let modalSlides = data.data.map((image, index) => {    
+               return (
+                <div key={index} className="mySlides">
+                  <div className="numbertext">{index} / {data.length}</div>
+                  <div style={{backgroundColor: "black"}}>
+                    <img src={image.link} style={{maxWidth:"100%", display:"block", marginLeft: "auto", marginRight: "auto"}} />
+                  </div>
+                </div>
+               );
+             });
+
+      let modalImages = data.data.map((image, index) => {    
+      return (
+        <div key={index} className="column">
+          <img className="demo cursor" src={image.link} style={{width:"auto", height: "200px"}} onClick={() => currentSlide(index+1)} alt="Nature and sunrise" />
+        </div>
+      );
+    });
+
       this.setState({pictures: imagesList});
+      this.setState({modalSlideContainer: modalSlides});
+      this.setState({modalImagesContainer: modalImages});
       console.log("state", this.state.pictures);
     })
   }
@@ -70,7 +95,8 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
     };
 
     return (
-      <section className="grid-wrap">
+    <div>
+    <section className="grid-wrap">
       <ul className="grid swipe-right" id="grid">
         <li className="title-box">
           <h2>Gallery images</h2>
@@ -78,6 +104,25 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
         {this.state.pictures}
       </ul>
     </section>
+
+    <div id="myModal" className="modal">
+      <span className="close cursor" onClick={closeModal}>&times;</span>
+      <div className="modal-content">
+
+        {this.state.modalSlideContainer}
+
+        <a className="prev" onClick={() => plusSlides(-1)}>&#10094;</a>
+        <a className="next" onClick={() => plusSlides(1)}>&#10095;</a>
+
+        <div className="caption-container">
+          <p id="caption"></p>
+        </div>
+
+        {this.state.modalImagesContainer}
+      </div>
+    </div>
+
+    </div>
     );
   }
 }
