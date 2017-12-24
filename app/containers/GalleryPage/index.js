@@ -56,7 +56,11 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
       console.log(data);
       let imagesList = data.data.map((image, index) => {
         return (
-          <li key={index}><a onClick={openModal}><img src={image.link} alt="dummy" style={{width: '300px', height: '230px'}} /><h3>{image.description}</h3></a></li>
+          <li key={index}>
+              <div onClick={openModal} style={{width: '300px', height: '300px', backgroundImage: "url(" + image.link + ")", backgroundSize: 'cover'}}>
+                <h3>{image.description}</h3>
+              </div>
+          </li>
         );
       });
 
@@ -65,7 +69,7 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
                 <div key={index} className="mySlides">
                   <div className="numbertext">{index} / {data.length}</div>
                   <div style={{backgroundColor: "black"}}>
-                    <img src={image.link} style={{maxWidth:"100%", display:"block", marginLeft: "auto", marginRight: "auto"}} />
+                    <img src={image.link} style={{height:"450px", display:"block", marginLeft: "auto", marginRight: "auto"}} />
                   </div>
                 </div>
                );
@@ -78,6 +82,8 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
         </div>
       );
     });
+
+      // console.log("parent = " + this.props.x);
 
       this.setState({pictures: imagesList});
       this.setState({modalSlideContainer: modalSlides});

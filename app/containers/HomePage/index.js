@@ -40,6 +40,10 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     }
   }
 
+  redirectToAlbumImages() {
+    
+  }
+
   componentDidMount() {
     let getAlbumsAPI = {
       link: 'https://api.imgur.com/3/account/jorje12/albums/',
@@ -101,6 +105,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         let backgroundStyle = {
           background : coverPic
         }
+
+        // this.props.x = 22;
         
         return (
           <div key={index} className="element  clearfix col1-3 home portfolio photography" style={{position: 'absolute', left: leftPos, top: topPos}}> <a href={"/Gallery/" + album.id} title="">

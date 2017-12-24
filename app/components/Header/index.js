@@ -26,6 +26,8 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
         <ul id="options" className="option-set clearfix" data-option-key="filter">
           <li className="selected"> <Link to='/'>Home</Link> </li>
           <li> <Link to='/about'>About</Link> </li>
+          <li> <Link to='/uploadimage'>Upload image</Link> </li>
+          <li> <Link to='/login'>Login</Link> </li>
         </ul>
       </nav>
     </div>
