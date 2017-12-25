@@ -101,10 +101,12 @@ input[type="submit"] {
   -webkit-transition: opacity 0.2s ease, background 0.2s ease;
   transition: opacity 0.2s ease, background 0.2s ease;
   display: block;
-  opacity: 0;
+  opacity: 1;
   margin: 10px 0 0 0;
   padding: 10px;
   cursor: pointer;
+  background-color: #EB5168;
+  margin: 20px 0;
 }
 
 input[type="submit"]:hover {
@@ -121,7 +123,7 @@ input.question:valid ~ input[type="submit"], textarea.question:valid ~ input[typ
 }
 
 input.question:invalid ~ input[type="submit"], textarea.question:invalid ~ input[type="submit"] {
-  display: none;
+  opacity: 0.5;
 }
 
 @-webkit-keyframes appear {
@@ -142,25 +144,27 @@ input.question:invalid ~ input[type="submit"], textarea.question:invalid ~ input
     font-size: 16px;
     position: relative;
     display: inline-block;
+    margin: 20px 0;
   }
 
   .select select {
     outline: none;
     -webkit-appearance: none;
     display: block;
-    padding: 1.2em 3em 1.3em 1.5em;
+    padding: 1em 3em 1.3em 1.5em;
     margin: 0;
-  
     transition: border-color 0.2s;
-    border: 5px solid #EB5168;
+    border: 1px solid #EB5168;
     border-radius: 5px;
-  
     background: #fff;
     color: #555;
     line-height: normal;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
 
   .select .arr {

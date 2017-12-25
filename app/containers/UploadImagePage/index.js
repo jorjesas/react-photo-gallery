@@ -11,10 +11,9 @@ export default function UploadImagePage() {
         Upload new image
         </H1>
 
-        <form action="/file-upload"
-            className="dropzone"
-            id="my-awesome-dropzone">
-        </form>
+        <div className="dropzone" id="upload-image-dropzone">
+            
+        </div>
 
         <form>
         <input type="text" name="name" className="question" id="nme" required autocomplete="off" />
@@ -31,8 +30,10 @@ export default function UploadImagePage() {
             </select>
         </div>
 
-        <input type="submit" value="Submit!" />
+        <input type="submit" value="Upload image" />
         </form>
+
+        
     </div>
   );
 }
