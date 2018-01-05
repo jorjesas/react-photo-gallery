@@ -29,6 +29,8 @@ import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
+import AlbumContainer from 'components/AlbumContainer';
+
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
@@ -40,8 +42,40 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     }
   }
 
-  redirectToAlbumImages() {
-    
+  calculateAlbumPosition(index) {
+    let leftPos = 0 + 'px';
+    let topPos = 0 + 'px';
+
+    if (index >= 4) {
+      let resetIndex = index - 4;
+      topPos = (Math.floor(resetIndex / 4) + 2)*320  + 'px';
+      leftPos = (resetIndex % 4)*320 + 'px';
+    }
+    else {
+      switch(index) {
+        case 0: 
+          leftPos = 0 + 'px';
+          topPos = 0 + 'px';
+          break;
+        case 1: 
+          leftPos = 960 + 'px';
+          topPos = 0 + 'px';
+          break;
+        case 2: 
+          leftPos = 0 + 'px';
+          topPos = 320 + 'px';
+          break;
+        case 3: 
+          leftPos = 960 + 'px';
+          topPos = 320 + 'px';
+          break;
+        default: 
+          leftPos = 0 + 'px';
+          topPos = 0 + 'px';
+      }
+    }
+
+    return {leftPos: leftPos, topPos: topPos};
   }
 
   componentDidMount() {
@@ -65,64 +99,11 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     .then(data => {
       console.log(data);
       let albumsContainer = data.data.map((album, index) => {
-        let leftPos = 0 + 'px';
-        let topPos = 0 + 'px';
-
-        if (index >= 4) {
-          let resetIndex = index - 4;
-          topPos = (Math.floor(resetIndex / 4) + 2)*320  + 'px';
-          leftPos = (resetIndex % 4)*320 + 'px';
-        }
-        else {
-          switch(index) {
-            case 0: 
-              leftPos = 0 + 'px';
-              topPos = 0 + 'px';
-              break;
-            case 1: 
-              leftPos = 960 + 'px';
-              topPos = 0 + 'px';
-              break;
-            case 2: 
-              leftPos = 0 + 'px';
-              topPos = 320 + 'px';
-              break;
-            case 3: 
-              leftPos = 960 + 'px';
-              topPos = 320 + 'px';
-              break;
-            default: 
-              leftPos = 0 + 'px';
-              topPos = 0 + 'px';
-          }
-        }
-        
-        let pos = 640 * (index+1) + 'px';
-        console.log("pos=",pos);
-
-        let coverPic = "https://i.imgur.com/" + album.cover + ".jpg";
-
-        let backgroundStyle = {
-          background : coverPic
-        }
-
-        // this.props.x = 22;
+        let pos = this.calculateAlbumPosition(index);
+        let albumContainerStyle = {position: 'absolute', left: pos.leftPos, top: pos.topPos};
         
         return (
-          <div key={index} className="element  clearfix col1-3 home portfolio photography" style={{position: 'absolute', left: leftPos, top: topPos}}> <a href={"/Gallery/" + album.id} title="">
-          <figure className="images test" style={{backgroundImage: "url(" + coverPic + ")"}}>
-
-          </figure>
-          <div className="description">
-            <h4>{album.title}</h4>
-            <div className="bottom">
-              <div className="wrapper">
-                <p className="small">view gallery</p>
-              </div>
-            </div>
-          </div>
-          </a> 
-        </div>
+          <AlbumContainer album={album} index={index} containerStyle={albumContainerStyle}></AlbumContainer>
         );
       })
       this.setState({albums: albumsContainer});
@@ -140,46 +121,33 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
     return (
       <div>
-      <div className="centered logo-wrapper">
-      <h1 id="logo"><a href="index.html">Photo Gallery</a></h1>
-      <div className="tagline">Galleries</div>
-    </div>
-    <div className="content-wrapper">
-      <div id="content">
-        <div className="container">
-          <div id="container" className="clearfix" style={{position: 'relative', height: '1400px'}}>
-            <div className="element  clearfix col2-3 home about grey" style={{position: 'absolute', left: '320px', top: '0px'}}>
-              <div className="tile-heading"><span>Image Gallery</span></div>
-              <div className="parent">
-                <div className="child">
-                  <h2>Hi! <br />
-                    A <strong>photo-gallery</strong> developed with ReactJs. <br />
-                    </h2>
-                  <a href="#about" className="bottom-link splink">
-                  <p className="small">read about</p>
-                  </a> 
-                  </div>
-              </div>
-            </div>
-            {this.state.albums}
-            {/* <div className="element  clearfix col1-3 home portfolio photography" style={{position: 'absolute', left: '640px', top: '0px'}}> <a href="project.html" title="">
-              <figure className="images"> <img src="https://i.imgur.com/2A09h3U.jpg" alt="Gallery name" /> </figure>
-              <div className="description">
-                <h4>Gallery #1</h4>
-                <div className="bottom">
-                  <div className="wrapper">
-                    <p className="small">view gallery</p>
+        <div className="centered logo-wrapper">
+          <h1 id="logo"><a href="index.html"><img src={require('../../images/icon-96x96.png')} /></a></h1>
+          <div className="tagline">Albums</div>
+        </div>
+        <div className="content-wrapper">
+          <div id="content">
+            <div className="container">
+              <div id="container" className="clearfix" style={{ position: 'relative', height: '1400px' }}>
+                <div className="element  clearfix col2-3 home about grey" style={{ position: 'absolute', left: '320px', top: '0px' }}>
+                  <div className="tile-heading"><span>Image Gallery</span></div>
+                  <div className="parent">
+                    <div className="child">
+                      <h2>Hi! <br />
+                        A <strong>photo-gallery</strong> developed with ReactJs. <br />
+                      </h2>
+                      <a href="about" className="bottom-link splink">
+                        <p className="small">read about</p>
+                      </a>
+                    </div>
                   </div>
                 </div>
+                {this.state.albums}
               </div>
-              </a> 
-            </div> */}
-            
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    </div>
     );
   }
 }

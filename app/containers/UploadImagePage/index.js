@@ -124,8 +124,7 @@ export class UploadImagePage extends React.PureComponent {
 render() {
 
   return (
-    <div>
-
+    <div className="upload-container">
           <center>
             <form>  
               <div style={style}>

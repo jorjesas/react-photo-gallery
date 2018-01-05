@@ -15,7 +15,7 @@ class Main extends React.Component { // eslint-disable-line react/prefer-statele
 
   render() {
     return (
-      <div>
+      <div style={{marginBottom: '100px'}}>
         <Switch>
             <Route exact path='/' component={HomePage}/>
             <Route path='/About' component={AboutPage}/>

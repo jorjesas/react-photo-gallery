@@ -1,6 +1,6 @@
-export function openModal() {
+export function openModal(index) {
     document.getElementById('myModal').style.display = "block";
-    currentSlide(1);
+    currentSlide(index+1);
   }
   
 export function closeModal() {
@@ -26,7 +26,7 @@ export function handleImageClick(n) {
 export function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("demo");
+    var dots = document.getElementsByClassName("modal-opacity");
     var captionText = document.getElementById("caption");
 
     if (n > slides.length) {slideIndex = 1}
@@ -42,7 +42,7 @@ export function showSlides(n) {
         dots[i].className = dots[i].className.replace(" active", "");
         if (i == (slideIndex-1)) {
             dots[slideIndex-1].className += " active";
-            captionText.innerHTML = dots[slideIndex-1].alt;
+            captionText.innerHTML = dots[slideIndex-1].dataset.imagedescription;
         }
     }
     console.log(slideIndex);

@@ -6,17 +6,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
-
-import injectReducer from 'utils/injectReducer';
-import injectSaga from 'utils/injectSaga';
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 
 import { openModal, closeModal, plusSlides, currentSlide, showSlides, handleImageClick} from './modal';
+
+import ImageContainer from 'components/ImageContainer';
+import {styles} from './styles.css';
 
 export class GalleryPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
@@ -56,34 +50,27 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
       console.log(data);
       let imagesList = data.data.map((image, index) => {
         return (
-          <li key={index}>
-              <div onClick={openModal} style={{width: '300px', height: '300px', backgroundImage: "url(" + image.link + ")", backgroundSize: 'cover'}}>
-                <h3>{image.description}</h3>
-              </div>
-          </li>
+          <ImageContainer image={image} index={index} onClickHandler={openModal}></ImageContainer>
         );
-      });
+    });
 
-      let modalSlides = data.data.map((image, index) => {    
-               return (
-                <div key={index} className="mySlides">
-                  <div className="numbertext">{index} / {data.length}</div>
-                  <div style={{backgroundColor: "black"}}>
-                    <img src={image.link} style={{height:"450px", display:"block", marginLeft: "auto", marginRight: "auto"}} />
-                  </div>
-                </div>
-               );
-             });
-
-      let modalImages = data.data.map((image, index) => {    
+    let modalSlides = data.data.map((image, index) => {    
       return (
-        <div key={index} className="column">
-          <img className="demo cursor" src={image.link} style={{width:"auto", height: "200px"}} onClick={() => currentSlide(index+1)} alt="Nature and sunrise" />
+        <div key={index} className="mySlides">
+          <div className="numbertext">{index} / {data.length}</div>
+          <div style={{ backgroundColor: "black" }}>
+            <img src={image.link} style={{ height: "450px", display: "block", marginLeft: "auto", marginRight: "auto" }} />
+          </div>
         </div>
       );
     });
 
-      // console.log("parent = " + this.props.x);
+    let modalImages = data.data.map((image, index) => {
+      return (
+        <div key={index} className="modal-image modal-opacity" style={{ backgroundImage: "url(" + image.link + ")" }} onClick={() => currentSlide(index + 1)} data-imagedescription={image.description}>
+        </div>
+      );
+    });
 
       this.setState({pictures: imagesList});
       this.setState({modalSlideContainer: modalSlides});
@@ -104,7 +91,7 @@ export class GalleryPage extends React.PureComponent { // eslint-disable-line re
     <div>
     <section className="grid-wrap">
       <ul className="grid swipe-right" id="grid">
-        <li className="title-box">
+        <li className="title-box gallery-image-description-box">
           <h2>Gallery images</h2>
         </li>
         {this.state.pictures}

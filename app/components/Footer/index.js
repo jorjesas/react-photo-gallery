@@ -7,7 +7,7 @@ import Wrapper from './Wrapper';
 import messages from './messages';
 
 const style = {
-  // position: 'absolute',
+  position: 'absolute',
   right: '0',
   bottom: '0',
   left: '0',

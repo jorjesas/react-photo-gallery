@@ -27,9 +27,7 @@ injectGlobal`
 /* =0. Fonts
 --------------------------------------------------------------------------------------------------------*/
 @font-face {
- font-family: 'fontello';
- src: url('../fonts/fontello.eot?3837060');
- src: url('../fonts/fontello.eot?3837060#iefix') format('embedded-opentype'), url('../fonts/fontello.woff?3837060') format('woff'), url('../fonts/fontello.ttf?3837060') format('truetype'), url('../fonts/fontello.svg?3837060#fontello') format('svg');
+ font-family: "Comic Sans MS", cursive, sans-serif;
  font-weight: normal;
  font-style: normal;
 }
@@ -38,7 +36,7 @@ injectGlobal`
 /*
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
-    font-family: 'fontello';
+    font-family: "Comic Sans MS", cursive, sans-serif;
     src: url('../font/fontello.svg?43886684#fontello') format('svg');
   }
 }
@@ -88,7 +86,7 @@ html, body, #wrap { height: 100%; }
 body > #wrap { height: auto; min-height: 100%; }
 .content-wrapper { padding-bottom: 272px; background:#fff }
 html { overflow: -moz-scrollbars-vertical; overflow-y: scroll; -webkit-font-smoothing: antialiased; height:100%; -webkit-text-size-adjust: 100%; }
-body { font-size: 16px; font-family: 'Merriweather', Georgia, "Times New Roman", Times, serif; color:#000; height:100% }
+body { font-size: 16px; font-family: "Comic Sans MS", cursive, sans-serif; color:#000; height:100% }
 strong { font-weight:700; }
 b { font-weight:700 }
 a, a > * { -webkit-transition: all 0.2s ease 0s; -moz-transition: all 0.2s ease 0s; -o-transition: all 0.2s ease 0s; transition: all 0.2s ease 0s; }
@@ -127,7 +125,8 @@ pre { padding:0 30px 25px 30px; border:1px dotted #3e3e3e; margin-top:10px; marg
 --------------------------------------------------------------------------------------------------------*/
 .logo-wrapper {position:relative; background:#fff }
 h1#logo { display:block; position:relative; text-align:center }
-h1#logo a { display:inline-block; background:url(../images/bg-logo.png) center no-repeat; background-size:60px 52px; width:60px; /*try to keep it below 52px*/ height:52px; text-indent:-9999px; }
+h1#logo a { display:inline-block; background:url(../images/bg-logo.png) center no-repeat; background-size:60px 52px; width:60px; /*try to keep it below 52px*/ height:52px; }
+h1#logo a img { width:60px; height:60px; }
 .tagline { font-family:'Montserrat',"Open Sans", Arial, Helvetica, sans-serif; font-size:24px; font-weight:400; padding:0 0 0 0; margin:0px auto; position:relative; color:#000; display:inline-block }
 .hentry h1, h2, h3, h4, h5 { line-height:1.3; display:block; position:relative; padding-bottom:13px; }
 h2 { font-size:36px; font-weight:300; line-height:48px; letter-spacing:-2px; }
@@ -182,7 +181,7 @@ a h3 { text-decoration:none; color:#000; }
  display: none;
 }
 
-#main-nav ul#options { float:left; margin-left:10px; }
+#main-nav ul#options { float:left; margin-left:10px; width:100%; }
 #main-nav ul#options li { display:inline-block; padding-right:25px; }
 #main-nav a { text-decoration: none; color: #fff; letter-spacing:2px; font-size: 11px; font-family: 'Montserrat',"Open Sans", Arial, Helvetica, sans-serif; padding:11px 0 10px 0; text-transform: uppercase; display:block}
 #main-nav > ul .active > a, #main-nav > ul a.active, #main-nav li a:hover, #options li a.current, #options li a.selected { color: #c39f76; }
@@ -232,6 +231,7 @@ header .social-list li {padding:9px 0 10px 0; margin-right:9px; }
 #header { z-index:555; width:100%; padding:6px 0px 6px 0; background:#161616; -webkit-transform: translateZ(0); }
 #content { width:100%; position:relative; z-index:55; height:auto; padding-bottom: 50px; }
 .container { padding:0px; width:1280px; position:relative; margin:0 auto; }
+.app-container { min-height:100%; }
 #container { margin:0 auto; }
 /* =End Main Content
 --------------------------------------------------------------------------------------------------------*/
@@ -704,121 +704,4 @@ ul.unordered-list li a:hover, .hentry ul li a:hover, ol li a:hover { color:#000;
 	float: left;
 	width: 25%;
   }
-  
-  /* The Modal (background) */
-  .modal {
-	display: none;
-	position: fixed;
-	z-index: 1;
-	padding-top: 100px;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: black;
-  }
-  
-  /* Modal Content */
-  .modal-content {
-	position: relative;
-	background-color: #fefefe;
-	margin: auto;
-	padding: 0;
-	width: 90%;
-	max-width: 1200px;
-  }
-  
-  /* The Close Button */
-  .close {
-	color: white;
-	position: absolute;
-	top: 10px;
-	right: 25px;
-	font-size: 35px;
-	font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-	color: #999;
-	text-decoration: none;
-	cursor: pointer;
-  }
-  
-  .mySlides {
-	display: none;
-  }
-  
-  .cursor {
-	cursor: pointer
-  }
-  
-  /* Next & previous buttons */
-  .prev,
-  .next {
-	cursor: pointer;
-	position: absolute;
-	top: 50%;
-	width: auto;
-	padding: 16px;
-	margin-top: -50px;
-	color: white;
-	font-weight: bold;
-	font-size: 20px;
-	transition: 0.6s ease;
-	border-radius: 0 3px 3px 0;
-	user-select: none;
-	-webkit-user-select: none;
-  }
-  
-  /* Position the "next button" to the right */
-  .next {
-	right: 0;
-	border-radius: 3px 0 0 3px;
-  }
-  
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover,
-  .next:hover {
-	background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  /* Number text (1/3 etc) */
-  .numbertext {
-	color: #f2f2f2;
-	font-size: 12px;
-	padding: 8px 12px;
-	position: absolute;
-	top: 0;
-  }
-  
-  img {
-	margin-bottom: -4px;
-  }
-  
-  .caption-container {
-	text-align: center;
-	background-color: black;
-	padding: 2px 16px;
-	color: white;
-  }
-  
-  .demo {
-	opacity: 0.6;
-  }
-  
-  .active,
-  .demo:hover {
-	opacity: 1;
-  }
-  
-  img.hover-shadow {
-	transition: 0.3s
-  }
-  
-  .hover-shadow:hover {
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-  }
-
 `;
